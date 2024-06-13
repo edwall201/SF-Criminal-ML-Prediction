@@ -3,7 +3,7 @@
 # 忽略 secret.yml 檔案
 # secret.yml
 
-# 忽略 config 目錄下的 database.yml 檔案
+# 忽略 train.csv 目錄下的 train.csv 檔案 因為檔案太大
 train.csv/train.csv
 
 

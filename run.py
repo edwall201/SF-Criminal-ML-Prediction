@@ -11,6 +11,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import xgboost as xgb
 
+import os
+print(os.getcwd())
+
 # Reading the data
 df_train = pd.read_csv('./train.csv/train.csv')
 df_test = pd.read_csv('./test.csv/test.csv')

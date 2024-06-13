@@ -13,7 +13,7 @@ X = df_train.drop('Category', axis=1)
 y = df_train['Category']
 
 # Splitting the dataset
-X_train, X_test, y_train, y_test = train_test_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Training a Random Forest Classifier
 rf = RandomForestClassifier(random_state=42)
@@ -35,4 +35,4 @@ epochs = 100
 
 bst = xgb.train(param, dtrain, epochs)
 preds = bst.predict(dtest)
-print('XGBoost Test Accuracy:', accuracy_head(y_test, preds))
+print('XGBoost Test Accuracy:', accuracy_score(y_test, preds))

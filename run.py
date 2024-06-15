@@ -322,28 +322,28 @@ print(f'Test Accuracy: {test_accuracy}')
 # plt.tight_layout()
 # plt.show()
 
-# # Using XGBoost for the final model
-# dtrain = xgb.DMatrix(X_train, label=y_train)
-# dtest = xgb.DMatrix(X_test, label=y_test)
+# Using XGBoost for the final model
+dtrain = xgb.DMatrix(X_train, label=y_train)
+dtest = xgb.DMatrix(X_test, label=y_test)
 
-# param = {
-#     'max_depth': 6,
-#     'eta': 0.1,
-#     'objective': 'multi:softmax',
-#     'num_class': len(np.unique(y_train))
-# }
-# epochs = 100
+param = {
+    'max_depth': 6,
+    'eta': 0.1,
+    'objective': 'multi:softmax',
+    'num_class': len(np.unique(y_train))
+}
+epochs = 100
 
-# # Training XGBoost model
-# bst = xgb.train(param, dtrain, epochs)
+# Training XGBoost model
+bst = xgb.train(param, dtrain, epochs)
 
-# # Making predictions with XGBoost
-# preds_train = bst.predict(dtrain)
-# preds_test = bst.predict(dtest)
+# Making predictions with XGBoost
+preds_train = bst.predict(dtrain)
+preds_test = bst.predict(dtest)
 
 # # Calculating accuracy
-# train_accuracy_xgb = accuracy_score(y_train, preds_train)
-# test_accuracy_xgb = accuracy_score(y_test, preds_test)
+train_accuracy_xgb = accuracy_score(y_train, preds_train)
+test_accuracy_xgb = accuracy_score(y_test, preds_test)
 
-# print(f'XGBoost Training Accuracy: {train_accuracy_xgb}')
-# print(f'XGBoost Test Accuracy: {test_accuracy_xgb}')
+print(f'XGBoost Training Accuracy: {train_accuracy_xgb}')
+print(f'XGBoost Test Accuracy: {test_accuracy_xgb}')

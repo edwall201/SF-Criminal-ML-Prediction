@@ -418,7 +418,10 @@ y_pred_proba = pd.DataFrame(rf_model.predict_proba(X_test), columns=rf_model.cla
 y_pred_proba.columns = [f"{category_mapping.get(c, f'Unknown_{c}')}" for c in rf_model.classes_]
 
 # 添加 'Id' 欄位
+result_df = y_pred_proba.copy()
 result_df.insert(0, 'Id', df_test['Id'])
+
+print(result_df.head())
 
 import xgboost as xgb
 from sklearn.metrics import accuracy_score

@@ -90,7 +90,6 @@ plt.show()
 crime_counts_by_day = df_eda.groupby('DayOfWeek_encoded')['Dates'].count()
 crime_counts_by_day
 
-import matplotlib.pyplot as plt
 
 crime_counts_by_day.plot(kind='bar')
 plt.title('Daily Crime Incident Counts')
@@ -233,80 +232,58 @@ district_ratios
 
 category_district_ratios = {}
 
-# 取得所有的警區
 all_districts = df_eda['PdDistrict'].unique()
 
-# 遍歷每個犯罪類別
 for category in df_eda['Category'].unique():
-    # 選擇該犯罪類別的資料子集
     category_data = df_eda[df_eda['Category'] == category]
     
-    # 計算該犯罪類別的總數
     category_total = len(category_data)
     
-    # 初始化該類別的字典
     category_district_ratios[category] = {district: 0.0 for district in all_districts}
     
-    # 遍歷每個警區
     for district in category_data['PdDistrict'].unique():
-        # 計算該警區的犯罪數量
         district_count = len(category_data[category_data['PdDistrict'] == district])
         
-        # 計算該警區犯罪數量佔該類別總數的比例
         ratio = district_count / category_total
         
-        # 將該比例寫入字典
         category_district_ratios[category][district] = ratio
 
-# 印出結果
 for category, district_ratios in category_district_ratios.items():
     print(f"Category: {category}")
     for district, ratio in district_ratios.items():
         print(f" {district}: {ratio:.5f}")
 
-# 建立一個包含所有警區的列表
 all_districts = set()
 for district_ratios in category_district_ratios.values():
     all_districts.update(district_ratios.keys())
 
-# 將所有比例轉換為浮點數
+# 
 district_ratio_float = {district: float(category_district_ratios.get(category, {}).get(district, 0.0)) for district in all_districts for category in category_district_ratios}
 
-# 建立一個空字典用於存儲結果
 comparison_results = {}
 
-# 遍歷每個犯罪類別
 for category, district_ratios in category_district_ratios.items():
-    # 初始化該類別的字典
     comparison_results[category] = {}
     
-    # 遍歷每個警區
     for district in all_districts:
-        # 計算該類別在該區的比例與該區全體比例的差異
         if district in district_ratios:
             difference = district_ratios[district] - district_ratio_float[district]
         else:
             difference = 0.0
         
-        # 將差異值加入字典中
         comparison_results[category][district] = difference
 
-import pandas as pd
 
 df_comparison = pd.DataFrame.from_dict(comparison_results, orient='index')
 df_comparison
 
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-# 定義以綠色為主的色彩映射
+
 cmap_green = sns.diverging_palette(150, 10, as_cmap=True)
 
-# 繪製熱力圖，調整 figsize 參數使得寬度更寬一些
 plt.figure(figsize=(13, 16))
 sns.heatmap(df_comparison, cmap=cmap_green, center=0, annot=False)
 plt.title('Heatmap of Difference between Category and District Ratio')
 plt.xlabel('PdDistrict')
 plt.ylabel('Category')
 plt.show()
-

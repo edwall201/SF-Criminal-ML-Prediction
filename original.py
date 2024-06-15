@@ -1,4 +1,3 @@
-!pip install category_encoders
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,8 +12,8 @@ from sklearn.metrics import accuracy_score
 import xgboost as xgb
 
 # Reading the data
-df_train = pd.read_csv('/content/drive/MyDrive/ML_project/train.csv/train.csv')
-df_test = pd.read_csv('/content/drive/MyDrive/ML_project/test.csv/test.csv')
+df_train = pd.read_csv('./train.csv/train.csv')
+df_test = pd.read_csv('./test.csv/test.csv')
 
 # Basic info about the dataset
 print(f'df_train has {len(df_train.columns)} columns')

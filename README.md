@@ -132,3 +132,4 @@ Separate the target variable (`Category`) from the feature set and divide the da
 
 The analysis of San Francisco crime data provided valuable insights into crime patterns. Initial models highlighted areas for potential improvement through advanced feature engineering and modeling techniques.
 
+## Improved Code

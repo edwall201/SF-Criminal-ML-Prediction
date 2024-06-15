@@ -1,7 +1,7 @@
 # 檔案名稱 .gitignore
 
-# 忽略 secret.yml 檔案
-# secret.yml
+# 忽略 test.py 檔案
+# test.py
 
 # 忽略 train.csv 目錄下的 train.csv 檔案 因為檔案太大
 train.csv/train.csv

@@ -124,12 +124,7 @@ Separate the target variable (`Category`) from the feature set and divide the da
 - Both Random Forest and XGBoost models showed room for improvement.
 - Further feature engineering and advanced modeling techniques could enhance accuracy.
 
-### Future Work
-- Refine feature sets and explore interactions between features.
-- Test other machine learning models and ensemble methods.
-- Combine temporal data with precise spatial analysis for better predictions.
-- Use insights to guide resource allocation and preventive measures.
-
-The analysis of San Francisco crime data provided valuable insights into crime patterns. Initial models highlighted areas for potential improvement through advanced feature engineering and modeling techniques.
-
+## Enhanced Feature Engineering
+- Incorporate Resolution Outcomes: Including data on whether crimes were solved or not could provide additional context for predictive modeling.
+ - TemporalAggregation: Creating aggregated features such as rolling averages or crime counts over different time windows (e.g., last week, last month )could capture trends and periodicity in crime incidents.
 ## Improved Code
